@@ -3,6 +3,8 @@ function RandomStrategy(board) {
 }
 
 RandomStrategy.prototype.makeMove = function() {
-    // generate random move
+    return Math.floor(Math.random() * max) + 1;
 }
+
+module.exports = RandomStrategy; 
 

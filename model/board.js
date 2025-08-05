@@ -6,6 +6,10 @@ function Board(rows, cols) {
 }
 
 Board.prototype.init = function() {
+    var colNums = []; 
+    for (let i = 1; i <= this.cols; i++) {
+        colNums.push(i); 
+    }
     for (let i = 0; i < this.rows; i++) {
         let row = []; 
         for (let j = 0; j < this.cols; j++) {
@@ -13,6 +17,7 @@ Board.prototype.init = function() {
         }
         this.grid.push(row); 
     }
+    this.grid.push(colNums); 
 }
 
 Board.prototype.print = function() {
