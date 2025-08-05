@@ -19,5 +19,4 @@ Board.prototype.print = function() {
     console.log(this.grid)
 }; 
 
-var b = new Board(6,7); 
-b.print(); 
+module.exports = Board; 
