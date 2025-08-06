@@ -5,7 +5,7 @@ function HumanStrategy(board) {
 }
 
 HumanStrategy.prototype.makeMove = function() {
-    return prompt('What is your move?'); 
+    return prompt('What is your move? (Number 1 - number of columns) '); 
 }
 
 module.exports = HumanStrategy; 
