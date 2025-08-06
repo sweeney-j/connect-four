@@ -13,7 +13,7 @@ function main() {
     var board = new Board(rows, cols); 
     var view = new View(board); 
     var human = new HumanStrategy(board);  
-    var robot = new RandomStrategy(board); 
+    var robot = new RandomStrategy(board, cols); 
     var player1 = new Player(human, 'X'); 
     var player2; 
     if (Number(playerPreference) === 1) {

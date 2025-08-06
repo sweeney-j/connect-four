@@ -23,16 +23,22 @@ GameController.prototype.startGame = function() {
         this.board.update(p1Move, this.p1); 
         console.log(this.view.render()); 
         gameOver = ruleskeeper.checkWin(p1Move); 
-        if (gameOver) break;
+        if (gameOver) {
+            console.log("Player 1 won the game"); 
+            break; 
+        }
         
         var p2Move = this.p2.move(); 
         while (!ruleskeeper.moveValid(p2Move)) {
             p2Move = this.p2.move(); 
         }
         this.board.update(p2Move, this.p2); 
-        gameOver = ruleskeeper.checkWin(p1Move); 
-        if (gameOver) break;
         console.log(this.view.render()); 
+        gameOver = ruleskeeper.checkWin(p1Move); 
+        if (gameOver) {
+            console.log("Player 2 won the game"); 
+            break; 
+        }
     }
 }
 
