@@ -4,29 +4,36 @@ const HumanStrategy = require('../controller/strategies/human-strategy');
 const RandomStrategy = require('../controller/strategies/random-strategy');
 const Ruleskeeper = require('../model/ruleskeeper'); 
 
-function GameController(board, view) {
+
+function GameController(board, view, p1, p2) {
     this.board = board; 
     this.view = view; 
+    this.p1 = p1; 
+    this.p2 = p2; 
 }
 
 GameController.prototype.startGame = function() {
     var gameOver = false; 
+    var ruleskeeper = new Ruleskeeper(this.board); 
     while (!gameOver) {
-        var p1Move = player1.makeMove(); 
+        var p1Move = this.p1.move(); 
         while (!ruleskeeper.moveValid(p1Move)) {
-            p1Move = player1.makeMove(); 
+            p1Move = this.p1.move(); 
         }
-        view.render(); 
+        this.board.update(p1Move, this.p1); 
+        console.log(this.view.render()); 
         gameOver = ruleskeeper.checkWin(p1Move); 
+        if (gameOver) break;
         
-        var p2Move = player2.makeMove(); 
+        var p2Move = this.p2.move(); 
         while (!ruleskeeper.moveValid(p2Move)) {
-            p2Move = player2.makeMove(); 
+            p2Move = this.p2.move(); 
         }
-        view.render(); 
-        gameOver = ruleskeeper.checkWin(p2Move); 
+        this.board.update(p2Move, this.p2); 
+        gameOver = ruleskeeper.checkWin(p1Move); 
+        if (gameOver) break;
+        console.log(this.view.render()); 
     }
-    console.log(view.render()); 
 }
 
 module.exports = GameController; 

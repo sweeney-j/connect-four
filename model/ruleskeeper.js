@@ -3,7 +3,7 @@ function Ruleskeeper(board) {
 }
 
 Ruleskeeper.prototype.moveValid = function(move) {
-    return board[0][move] === '_'; 
+    return this.board.grid[0][move - 1] === '_'; 
 }
 
 // Narrow down the checks a lot by just evaluating the tile that was just placed 

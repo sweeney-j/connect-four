@@ -3,6 +3,7 @@ const Board = require('./model/board');
 const View = require('./view/view'); 
 const HumanStrategy = require('./controller/strategies/human-strategy');
 const RandomStrategy = require('./controller/strategies/random-strategy');
+const Player = require('./controller/player'); 
 const GameController = require('./controller/game-controller'); 
 
 function main() {
@@ -10,16 +11,17 @@ function main() {
     const cols = prompt("How many columns would you like this game to be? "); 
     const playerPreference = prompt("Type 1 to play against an agent or anything else to play against a human "); 
     var board = new Board(rows, cols); 
-    var player1 = new HumanStrategy(board);  
+    var view = new View(board); 
+    var human = new HumanStrategy(board);  
+    var robot = new RandomStrategy(board); 
+    var player1 = new Player(human, 'X'); 
     var player2; 
     if (Number(playerPreference) === 1) {
-        player2 = new RandomStrategy(board); 
+        player2 = new Player(robot, 'O'); 
     } else {
-        player2 = new HumanStrategy(board); 
+        player2 = new Player(human, 'O'); 
     }
-    var board = new Board(6, 7); 
-    var view = new View(); 
-    var controller = new GameController(board, view); 
+    var controller = new GameController(board, view, player1, player2); 
     controller.startGame(); 
 }
 

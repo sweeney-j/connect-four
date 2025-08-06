@@ -20,8 +20,13 @@ Board.prototype.init = function() {
     this.grid.push(colNums); 
 }
 
-Board.prototype.print = function() {
-    console.log(this.grid)
-}; 
+Board.prototype.update = function(move, player) {
+    for (let i = this.rows; i >= 0; i--) {
+        if (this.grid[i][move-1] === '_') {
+            this.grid[i][move-1] = player.token; 
+            break; 
+        }
+    }
+}
 
 module.exports = Board; 
