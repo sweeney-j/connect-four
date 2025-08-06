@@ -1,6 +1,6 @@
 ## Connect Four 
 
-A small and simple CLI connect four game built only using JavaScript prototypes, without ES6 class syntax. 
+A small and simple CLI connect four game built only using JavaScript prototypes. Just for fun. 
 
 ### Run the game 
 ``` 
